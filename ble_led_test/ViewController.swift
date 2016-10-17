@@ -8,15 +8,18 @@
 
 import UIKit
 import CoreBluetooth
-import CoreFoundation
+import Foundation
 
 class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDelegate
 {
+        
     var centralManager:CBCentralManager!
     var BLEPeripheral:CBPeripheral!
     
     @IBOutlet weak var device: UILabel!
     
+    private let uartManager = UartManager.sharedInstance
+
     static private let prefixes = ["!Q", "!A", "!G", "!M", "!L","!S"];     // same order that ControllerType
     
     override func viewDidLoad() {
@@ -120,9 +123,6 @@ class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDele
         print("\(characteristics) キャラクタリスティックが見つかりました")
         
         //キャラクタリスティックに値の書き込む
-        let hoge = NSMutableData()
-        let prefixData = ViewController.prefixes[6].data(using: String.Encoding.utf8)!
-        hoge.append(prefixData)
         
         
         let value = "T"
@@ -130,8 +130,18 @@ class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDele
         BLEPeripheral.writeValue(data as Data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
     }
     
+        
+    func setdata(){
+        let hoge = NSMutableData()
+        let prefixData = ViewController.prefixes[6].data(using: String.Encoding.utf8)!
+        hoge.append(prefixData)
+        
+        var floatValue = Float(1)
+        hoge.append(&floatValue, length: MemoryLayout<Float>.size)
+        sendDataWithCrc(data: hoge)
+    }
     
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

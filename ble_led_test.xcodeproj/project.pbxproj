@@ -14,6 +14,12 @@
 		6F312AD21DAFD4AF0032C116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F312AD01DAFD4AF0032C116 /* LaunchScreen.storyboard */; };
 		6F312ADD1DAFD4AF0032C116 /* ble_led_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F312ADC1DAFD4AF0032C116 /* ble_led_testTests.swift */; };
 		6F312AE81DAFD4AF0032C116 /* ble_led_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F312AE71DAFD4AF0032C116 /* ble_led_testUITests.swift */; };
+		6F6864751DB46B9400A66A9C /* UartDataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6864741DB46B9400A66A9C /* UartDataChunk.swift */; };
+		6F6864771DB46C4C00A66A9C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6864761DB46C4C00A66A9C /* Config.swift */; };
+		6F6864791DB46CE400A66A9C /* HexConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6864781DB46CE400A66A9C /* HexConversions.swift */; };
+		6F68647B1DB46D0E00A66A9C /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F68647A1DB46D0E00A66A9C /* LogHelper.swift */; };
+		6F68647D1DB46EAE00A66A9C /* BlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F68647C1DB46EAE00A66A9C /* BlePeripheral.swift */; };
+		6F6864831DB477DD00A66A9C /* UartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6864821DB477DD00A66A9C /* UartManager.swift */; };
 		6F8DCBB81DB2390E00453585 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8DCBB71DB2390E00453585 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +54,13 @@
 		6F312AE31DAFD4AF0032C116 /* ble_led_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ble_led_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F312AE71DAFD4AF0032C116 /* ble_led_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ble_led_testUITests.swift; sourceTree = "<group>"; };
 		6F312AE91DAFD4AF0032C116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F6864741DB46B9400A66A9C /* UartDataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UartDataChunk.swift; sourceTree = "<group>"; };
+		6F6864761DB46C4C00A66A9C /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6F6864781DB46CE400A66A9C /* HexConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexConversions.swift; sourceTree = "<group>"; };
+		6F68647A1DB46D0E00A66A9C /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		6F68647C1DB46EAE00A66A9C /* BlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlePeripheral.swift; sourceTree = "<group>"; };
+		6F6864801DB474E400A66A9C /* LogHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		6F6864821DB477DD00A66A9C /* UartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UartManager.swift; sourceTree = "<group>"; };
 		6F8DCBB71DB2390E00453585 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -101,12 +114,15 @@
 		6F312AC61DAFD4AF0032C116 /* ble_led_test */ = {
 			isa = PBXGroup;
 			children = (
+				6F6864811DB4757F00A66A9C /* Common */,
+				6F68647E1DB4748B00A66A9C /* Utils */,
 				6F312AC71DAFD4AF0032C116 /* AppDelegate.swift */,
 				6F312AC91DAFD4AF0032C116 /* ViewController.swift */,
 				6F312ACB1DAFD4AF0032C116 /* Main.storyboard */,
 				6F312ACE1DAFD4AF0032C116 /* Assets.xcassets */,
 				6F312AD01DAFD4AF0032C116 /* LaunchScreen.storyboard */,
 				6F312AD31DAFD4AF0032C116 /* Info.plist */,
+				6F6864761DB46C4C00A66A9C /* Config.swift */,
 			);
 			path = ble_led_test;
 			sourceTree = "<group>";
@@ -127,6 +143,34 @@
 				6F312AE91DAFD4AF0032C116 /* Info.plist */,
 			);
 			path = ble_led_testUITests;
+			sourceTree = "<group>";
+		};
+		6F68647E1DB4748B00A66A9C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6F68647A1DB46D0E00A66A9C /* LogHelper.swift */,
+				6F6864801DB474E400A66A9C /* LogHelper.h */,
+				6F6864781DB46CE400A66A9C /* HexConversions.swift */,
+				6F68647F1DB4749D00A66A9C /* BLE */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		6F68647F1DB4749D00A66A9C /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				6F68647C1DB46EAE00A66A9C /* BlePeripheral.swift */,
+			);
+			name = BLE;
+			sourceTree = "<group>";
+		};
+		6F6864811DB4757F00A66A9C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6F6864741DB46B9400A66A9C /* UartDataChunk.swift */,
+				6F6864821DB477DD00A66A9C /* UartManager.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		6F8DCBB61DB2390E00453585 /* Frameworks */ = {
@@ -278,7 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F312ACA1DAFD4AF0032C116 /* ViewController.swift in Sources */,
+				6F6864771DB46C4C00A66A9C /* Config.swift in Sources */,
+				6F6864751DB46B9400A66A9C /* UartDataChunk.swift in Sources */,
+				6F6864831DB477DD00A66A9C /* UartManager.swift in Sources */,
+				6F6864791DB46CE400A66A9C /* HexConversions.swift in Sources */,
+				6F68647B1DB46D0E00A66A9C /* LogHelper.swift in Sources */,
 				6F312AC81DAFD4AF0032C116 /* AppDelegate.swift in Sources */,
+				6F68647D1DB46EAE00A66A9C /* BlePeripheral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
