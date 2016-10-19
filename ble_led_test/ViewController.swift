@@ -123,23 +123,28 @@ class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDele
         print("\(characteristics) キャラクタリスティックが見つかりました")
         
         //キャラクタリスティックに値の書き込む
-        
-        
+        setdata()
+        /*
         let value = "T"
         let data: NSData! = value.data(using: String.Encoding.utf8,allowLossyConversion:true) as NSData!
         BLEPeripheral.writeValue(data as Data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+ */
     }
-    
         
     func setdata(){
-        let hoge = NSMutableData()
-        let prefixData = ViewController.prefixes[6].data(using: String.Encoding.utf8)!
-        hoge.append(prefixData)
+        //et hoge = NSMutableData()
+        //let prefixData = ViewController.prefixes[5].data(using: String.Encoding.utf8)!
+        //hoge.append(prefixData)
         
-        var floatValue = Float(1)
-        hoge.append(&floatValue, length: MemoryLayout<Float>.size)
-        sendDataWithCrc(data: hoge)
+        let bytes:[UInt8] = [0x21,0x53,0x31]
+        let hoge = NSData(bytes: bytes, length: bytes.count)
+        
+       /* var floatValue = Float(1)
+        hoge.append(&floatValue, length: MemoryLayout<Float>.size)*/
+        uartManager.sendDataWithCrc(data: hoge)
     }
+    
+    
     
         
     override func didReceiveMemoryWarning() {
