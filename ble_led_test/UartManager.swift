@@ -77,10 +77,11 @@ class UartManager: NSObject {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: UartNotifications.DidReceiveData.rawValue), object: nil, userInfo:["dataChunk" : dataChunk]);
     }
     
+    //誤り符号検出のためのメソッド
     func sendDataWithCrc(data : NSData) {
         
         let len = data.length
-        var dataBytes = [UInt8](repeating: 0, count: len)   //0をdataの長さ分dataBytesに挿入
+        var dataBytes = [UInt8](repeating: 0, count: len)   //0をdataの長さ分dataBytesに挿入(dataBytesの初期化)
         var crc: UInt8 = 0
         data.getBytes(&dataBytes, length: len)   //dataの中身をdataBytesにコピーする．
         

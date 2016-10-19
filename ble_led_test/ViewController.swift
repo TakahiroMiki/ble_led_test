@@ -119,7 +119,7 @@ class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDele
         }
         
         let characteristics = service.characteristics!
-        let characteristic = characteristics[0]
+        _ = characteristics[0]
         print("\(characteristics) キャラクタリスティックが見つかりました")
         
         //キャラクタリスティックに値の書き込む
@@ -136,11 +136,14 @@ class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDele
         //let prefixData = ViewController.prefixes[5].data(using: String.Encoding.utf8)!
         //hoge.append(prefixData)
         
+        //まず決め打ちで値をNSDataに代入
         let bytes:[UInt8] = [0x21,0x53,0x31]
         let hoge = NSData(bytes: bytes, length: bytes.count)
         
        /* var floatValue = Float(1)
         hoge.append(&floatValue, length: MemoryLayout<Float>.size)*/
+        
+        //誤り検出のための符号を追加するためのメソッドへ
         uartManager.sendDataWithCrc(data: hoge)
     }
     
